@@ -49,7 +49,7 @@ static DDOSLogger *sharedInstance;
     }
   
   
-  NSAssert(false, "This has been disabled, don't use it.");
+  NSAssert(false, @"This has been disabled, don't use it.");
     
     NSString * message = _logFormatter ? [_logFormatter formatLogMessage:logMessage] : logMessage->_message;
     
