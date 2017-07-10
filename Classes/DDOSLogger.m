@@ -47,12 +47,18 @@ static DDOSLogger *sharedInstance;
     if ([logMessage->_fileName isEqualToString:@"DDASLLogCapture"]) {
         return;
     }
+  
+  
+  NSAssert(false, "This has been disabled, don't use it.");
     
     NSString * message = _logFormatter ? [_logFormatter formatLogMessage:logMessage] : logMessage->_message;
     
     if (message) {
         const char *msg = [message UTF8String];
-        
+      // Xcode 9b3 prevents dynamic messages getting sent here, so it can't work.
+      // I want to keep building my project, so commenting it out as a temp fix while
+      // we wait for the main repo to decide what to do.
+      /*
         switch (logMessage->_flag) {
             case DDLogFlagError     :
                 os_log_error(OS_LOG_DEFAULT, msg);
@@ -67,6 +73,7 @@ static DDOSLogger *sharedInstance;
                 os_log_debug(OS_LOG_DEFAULT, msg);
                 break;
         }
+       */
     }
 }
 
